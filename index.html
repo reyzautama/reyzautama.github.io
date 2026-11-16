@@ -4,308 +4,715 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jasa Website & Otomasi Bisnis | TriDigi - Reyza Abdurrozaq</title>
-<meta name="description" content="Saya bantu UMKM dan tim kecil hemat waktu: scraping data, laporan otomatis, bot, dan website yang cepat. Konsultasi gratis.">
+<meta name="description" content="TriDigi membantu UMKM hemat waktu: scraping data, laporan otomatis, bot, dan website yang cepat. Konsultasi gratis, estimasi jelas, garansi 14 hari.">
+<meta name="theme-color" content="#2f54eb">
+<meta property="og:title" content="TriDigi — Jasa Website & Otomasi Bisnis">
+<meta property="og:description" content="Data & website yang kerja sendiri untuk bisnis Anda. Konsultasi gratis, garansi 14 hari.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232f54eb'/><text x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'>TD</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --accent: #2f54eb;
     --accent-dark: #1d39c4;
-    --ink: #1a1a2e;
-    --muted: #5c6070;
+    --accent-2: #722ed1;
+    --ink: #0e1230;
+    --muted: #5b6178;
     --bg: #ffffff;
-    --bg-soft: #f5f7ff;
-    --border: #e6e9f2;
-    --radius: 14px;
+    --bg-soft: #f6f8ff;
+    --line: #e8ebf5;
+    --green: #16a34a;
+    --red: #ff4d4f;
+    --radius: 16px;
+    --shadow-sm: 0 2px 8px rgba(14, 18, 48, .05);
+    --shadow-md: 0 12px 34px rgba(14, 18, 48, .09);
+    --font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--ink);
-    background: var(--bg);
-    line-height: 1.6;
-  }
-  .container { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  body { font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  ::selection { background: rgba(47, 84, 235, .18); }
+  img, svg { display: block; }
+  a { color: inherit; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
 
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(255,255,255,.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
+  /* ============ NAV ============ */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s, box-shadow .25s;
   }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 62px;
+  body.scrolled .nav { border-bottom-color: var(--line); box-shadow: var(--shadow-sm); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 20px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 1.08rem; letter-spacing: -.01em; }
+  .logo-mark {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff; font-size: .85rem; font-weight: 800;
+    display: grid; place-items: center; letter-spacing: .02em;
+    box-shadow: 0 4px 12px rgba(47, 84, 235, .35);
   }
-  .brand { font-weight: 800; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
-  .brand span { color: var(--accent); }
-  .nav-links { display: flex; gap: 26px; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 500;
-  }
+  .logo-text em { font-style: normal; font-weight: 600; font-size: .78rem; color: var(--muted); margin-left: 6px; }
+  .nav-links { display: flex; gap: 28px; margin-left: auto; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 600; transition: color .15s; }
   .nav-links a:hover { color: var(--accent); }
-  .nav-cta {
-    background: var(--accent); color: #fff !important;
-    padding: 9px 18px; border-radius: 999px; font-weight: 600;
-  }
-  .nav-cta:hover { background: var(--accent-dark); }
-  @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+  @media (max-width: 900px) { .nav-links { display: none; } .logo-text em { display: none; } }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(160deg, var(--bg-soft) 0%, #ffffff 70%);
-    padding: 84px 0 70px;
-  }
-  .hero h1 {
-    font-size: clamp(1.9rem, 4.5vw, 3rem);
-    line-height: 1.2; letter-spacing: -.02em; max-width: 760px;
-  }
-  .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero p {
-    margin-top: 18px; font-size: 1.1rem; color: var(--muted); max-width: 640px;
-  }
-  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  /* ============ BUTTONS ============ */
   .btn {
-    display: inline-block; padding: 14px 28px; border-radius: 999px;
-    font-weight: 600; text-decoration: none; font-size: 1rem;
-    transition: .15s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: .97rem;
+    text-decoration: none; transition: .18s; border: 1px solid transparent; cursor: pointer;
+    font-family: var(--font);
   }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
-  .btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--border); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-  .hero-badges { margin-top: 34px; display: flex; gap: 22px; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
-  .hero-badges span::before { content: "✓ "; color: #22a06b; font-weight: 700; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 22px rgba(47, 84, 235, .3); }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(47, 84, 235, .38); }
+  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .btn-wa { background: #25d366; color: #fff; box-shadow: 0 8px 22px rgba(37, 211, 102, .32); }
+  .btn-wa:hover { background: #1fb958; transform: translateY(-2px); }
+  .btn-sm { padding: 10px 20px; font-size: .88rem; }
+  .btn-light { background: #fff; color: var(--ink); }
+  .btn-light:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0, 0, 0, .25); }
 
-  /* SECTION */
-  section { padding: 72px 0; }
-  .section-title { font-size: 1.7rem; letter-spacing: -.01em; }
-  .section-sub { color: var(--muted); margin-top: 8px; max-width: 620px; }
+  /* ============ HERO ============ */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: 84px 0 76px;
+    background:
+      radial-gradient(720px 340px at 85% -80px, rgba(114, 46, 209, .10), transparent 60%),
+      radial-gradient(680px 360px at -10% 110px, rgba(47, 84, 235, .10), transparent 60%),
+      var(--bg);
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(47, 84, 235, .13) 1px, transparent 1px);
+    background-size: 26px 26px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.6), transparent 70%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.6), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 54px; align-items: center; }
+  @media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } .hero { padding: 60px 0 56px; } }
 
-  /* LAYANAN */
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 36px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 16px 7px 12px; font-size: .82rem; font-weight: 600; color: var(--muted);
+    box-shadow: var(--shadow-sm);
+  }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); position: relative; }
+  .pill .dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(22, 163, 74, .35); animation: ping 1.8s ease-out infinite; }
+  @keyframes ping { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+  .pill b { color: var(--accent); }
+
+  .hero h1 {
+    margin-top: 22px;
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    line-height: 1.14; letter-spacing: -.025em; font-weight: 800;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(92deg, var(--accent) 10%, var(--accent-2) 90%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-sub { margin-top: 18px; font-size: 1.08rem; color: var(--muted); max-width: 560px; }
+  .hero-cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-badges { margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap; font-size: .87rem; color: var(--muted); font-weight: 500; }
+  .hero-badges span { display: inline-flex; align-items: center; gap: 7px; }
+  .hero-badges svg { width: 16px; height: 16px; color: var(--green); }
+
+  /* --- hero mock --- */
+  .hero-visual { position: relative; }
+  .mock {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    box-shadow: 0 30px 70px rgba(14, 18, 48, .16); overflow: hidden;
+    transform: rotate(1.2deg);
+  }
+  .mock-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: var(--bg-soft); border-bottom: 1px solid var(--line); }
+  .mock-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d7dcec; }
+  .mock-bar i:nth-child(1) { background: #ff5f57; } .mock-bar i:nth-child(2) { background: #febc2e; } .mock-bar i:nth-child(3) { background: #28c840; }
+  .mock-url { margin-left: 10px; background: #fff; border: 1px solid var(--line); border-radius: 7px; font-size: .72rem; color: var(--muted); padding: 3px 12px; font-weight: 600; }
+  .mock-body { padding: 20px; }
+  .mock-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+  .mock-head small { display: block; font-size: .72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .mock-head b { font-size: .98rem; }
+  .mock-live { font-size: .7rem; font-weight: 700; color: var(--green); background: rgba(22, 163, 74, .1); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .mock-rows { display: grid; gap: 8px; }
+  .mock-row {
+    display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; align-items: center;
+    background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+    padding: 9px 13px; font-size: .82rem;
+  }
+  .mock-row span { font-weight: 600; }
+  .mock-row s { color: #9aa0b6; font-size: .76rem; }
+  .mock-row b { font-size: .84rem; }
+  .mock-row em { font-style: normal; font-size: .7rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; }
+  .em-down { color: var(--green); background: rgba(22, 163, 74, .12); }
+  .em-up { color: var(--red); background: rgba(255, 79, 79, .1); }
+  .mock-chart { display: flex; align-items: flex-end; gap: 8px; height: 74px; margin-top: 16px; padding-top: 4px; }
+  .mock-chart i {
+    flex: 1; border-radius: 6px 6px 3px 3px;
+    background: linear-gradient(180deg, var(--accent), rgba(47, 84, 235, .35));
+    animation: grow 1s cubic-bezier(.2, .8, .2, 1) backwards;
+  }
+  .mock-chart i:nth-child(1) { height: 42%; animation-delay: .05s; }
+  .mock-chart i:nth-child(2) { height: 68%; animation-delay: .15s; }
+  .mock-chart i:nth-child(3) { height: 50%; animation-delay: .25s; }
+  .mock-chart i:nth-child(4) { height: 86%; animation-delay: .35s; }
+  .mock-chart i:nth-child(5) { height: 62%; animation-delay: .45s; }
+  .mock-chart i:nth-child(6) { height: 96%; animation-delay: .55s; background: linear-gradient(180deg, var(--accent-2), rgba(114, 46, 209, .4)); }
+  .mock-chart i:nth-child(7) { height: 74%; animation-delay: .65s; }
+  @keyframes grow { from { transform: scaleY(0); transform-origin: bottom; } }
+  .mock-foot { margin-top: 16px; font-size: .76rem; font-weight: 600; color: var(--green); display: flex; align-items: center; gap: 7px; }
+  .mock-foot svg { width: 15px; height: 15px; }
+  .mock-caption { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 16px; }
+  .hero-visual .float-tag {
+    position: absolute; top: -16px; right: -8px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: var(--shadow-md); padding: 9px 15px; font-size: .78rem; font-weight: 700;
+    transform: rotate(-2deg); z-index: 2;
+  }
+  .float-tag span { color: var(--accent); }
+  @media (max-width: 940px) { .hero-visual .float-tag { right: 8px; } .mock { transform: none; } }
+
+  /* ============ STATS ============ */
+  .stats { border-block: 1px solid var(--line); background: var(--bg-soft); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 26px 0; }
+  .stat { display: flex; align-items: center; gap: 12px; }
+  .stat-ic {
+    width: 40px; height: 40px; flex: none; border-radius: 11px; background: #fff;
+    border: 1px solid var(--line); display: grid; place-items: center; color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-ic svg { width: 19px; height: 19px; }
+  .stat b { display: block; font-size: .93rem; letter-spacing: -.01em; }
+  .stat small { color: var(--muted); font-size: .78rem; }
+  @media (max-width: 860px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+
+  /* ============ SECTIONS ============ */
+  section { padding: 84px 0; }
+  @media (max-width: 700px) { section { padding: 60px 0; } }
+  .sec-head { max-width: 640px; }
+  .sec-head.center { margin-inline: auto; text-align: center; }
+  .eyebrow {
+    display: inline-block; font-size: .76rem; font-weight: 800; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(47, 84, 235, .08); padding: 5px 14px; border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .sec-head h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.02em; line-height: 1.25; }
+  .sec-head p { margin-top: 12px; color: var(--muted); }
+
+  /* ============ LAYANAN ============ */
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 44px; }
+  @media (max-width: 980px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .grid-4 { grid-template-columns: 1fr; } }
   .card {
-    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 26px 22px; transition: .15s;
+    position: relative; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 22px 24px; transition: .2s; display: flex; flex-direction: column;
   }
-  .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(47,84,235,.08); }
-  .card .icon { font-size: 1.6rem; }
-  .card h3 { font-size: 1.05rem; margin: 12px 0 8px; }
-  .card p { color: var(--muted); font-size: .93rem; }
-  .card .price { display: block; margin-top: 14px; font-weight: 700; font-size: .95rem; }
-  .card .price s { color: #9aa0b0; font-weight: 500; margin-right: 6px; text-decoration-thickness: 1.5px; }
-  .card .price strong { color: var(--accent); font-size: 1.12rem; }
-  .card .price .promo {
-    display: inline-block; margin-left: 6px; background: #ff4d4f; color: #fff;
-    font-size: .66rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
-    vertical-align: middle; letter-spacing: .03em;
+  .card:hover { border-color: rgba(47, 84, 235, .45); transform: translateY(-5px); box-shadow: var(--shadow-md); }
+  .card .ic {
+    width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
+    background: linear-gradient(135deg, rgba(47, 84, 235, .12), rgba(114, 46, 209, .12));
+    color: var(--accent); margin-bottom: 16px;
   }
-  .price-note { margin-top: 18px; font-size: .85rem; color: var(--muted); }
+  .card .ic svg { width: 22px; height: 22px; }
+  .card h3 { font-size: 1.02rem; letter-spacing: -.01em; }
+  .card p { color: var(--muted); font-size: .88rem; margin-top: 8px; flex: 1; }
+  .card .tag-top {
+    position: absolute; top: 14px; right: 14px; font-size: .62rem; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase; color: #fff;
+    background: linear-gradient(92deg, var(--accent), var(--accent-2));
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .price { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
+  .price s { color: #9aa0b6; font-size: .86rem; font-weight: 500; }
+  .price-line { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .price-line strong { font-size: 1.25rem; letter-spacing: -.02em; color: var(--ink); }
+  .price-line .promo { font-size: .64rem; font-weight: 800; color: #fff; background: var(--red); padding: 3px 9px; border-radius: 999px; letter-spacing: .04em; }
+  .price small { display: block; margin-top: 5px; font-size: .72rem; color: var(--muted); }
+  .price-note { margin-top: 20px; font-size: .85rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .price-note svg { width: 16px; height: 16px; color: var(--accent); flex: none; }
 
-  /* LANGKAH */
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 36px; }
-  .step { background: var(--bg-soft); border-radius: var(--radius); padding: 26px 22px; }
+  /* ============ KEUNGGULAN ============ */
+  .why { background: var(--bg-soft); border-block: 1px solid var(--line); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; } }
+  .why-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; transition: .2s; }
+  .why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .why-card .ic { width: 44px; height: 44px; border-radius: 12px; background: rgba(47, 84, 235, .09); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; }
+  .why-card .ic svg { width: 21px; height: 21px; }
+  .why-card h3 { font-size: 1rem; }
+  .why-card p { color: var(--muted); font-size: .88rem; margin-top: 8px; }
+
+  /* ============ CARA KERJA ============ */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 48px; position: relative; }
+  .steps::before {
+    content: ""; position: absolute; top: 24px; left: 8%; right: 8%; height: 2px;
+    background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
+    z-index: 0;
+  }
+  .step { position: relative; z-index: 1; background: #fff; border-radius: var(--radius); padding: 4px 6px; text-align: left; }
   .step b {
-    display: inline-flex; width: 34px; height: 34px; border-radius: 50%;
-    background: var(--accent); color: #fff; align-items: center; justify-content: center;
-    font-size: .95rem; margin-bottom: 12px;
+    display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff;
+    font-size: 1rem; font-weight: 800; margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(47, 84, 235, .32); border: 4px solid #fff;
   }
-  .step h3 { font-size: 1rem; margin-bottom: 6px; }
-  .step p { color: var(--muted); font-size: .92rem; }
+  .step h3 { font-size: 1.02rem; }
+  .step p { color: var(--muted); font-size: .89rem; margin-top: 8px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; gap: 30px; } .steps::before { display: none; } }
 
-  /* CONTOH */
-  .contoh-list { margin-top: 30px; display: grid; gap: 14px; }
-  .contoh {
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 18px 22px; flex-wrap: wrap;
+  /* ============ CONTOH ============ */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 44px; }
+  @media (max-width: 760px) { .grid-2 { grid-template-columns: 1fr; } }
+  .work {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px; transition: .2s;
   }
-  .contoh b { font-size: .98rem; }
-  .contoh small { color: var(--muted); display: block; font-size: .88rem; margin-top: 2px; }
-  .tag {
-    background: var(--bg-soft); color: var(--accent); font-size: .8rem;
-    font-weight: 600; padding: 5px 12px; border-radius: 999px; white-space: nowrap;
+  .work:hover { border-color: rgba(47, 84, 235, .45); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .work .ic { width: 44px; height: 44px; flex: none; border-radius: 12px; background: var(--bg-soft); color: var(--accent); display: grid; place-items: center; border: 1px solid var(--line); }
+  .work .ic svg { width: 20px; height: 20px; }
+  .work b { font-size: .96rem; display: block; }
+  .work p { color: var(--muted); font-size: .86rem; margin-top: 4px; }
+  .work .tag { display: inline-block; margin-top: 10px; font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: rgba(47, 84, 235, .08); padding: 4px 11px; border-radius: 999px; }
+
+  /* ============ FAQ ============ */
+  .faq { background: var(--bg-soft); border-block: 1px solid var(--line); }
+  .faq-list { max-width: 760px; margin: 40px auto 0; display: grid; gap: 12px; }
+  details {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 0 22px; overflow: hidden; transition: box-shadow .2s;
   }
+  details[open] { box-shadow: var(--shadow-sm); }
+  summary {
+    list-style: none; cursor: pointer; padding: 18px 0; font-weight: 700; font-size: .96rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; font-size: 1.3rem; font-weight: 500; color: var(--accent);
+    transition: transform .25s; flex: none; line-height: 1;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); font-size: .9rem; padding-bottom: 18px; }
 
-  /* TENTANG */
-  .tentang { background: var(--bg-soft); }
-  .tentang p { max-width: 680px; color: var(--muted); margin-top: 14px; }
-
-  /* KONTAK */
+  /* ============ KONTAK ============ */
   .kontak-box {
-    background: var(--ink); color: #fff; border-radius: 20px;
-    padding: 52px 40px; text-align: center; margin-top: 8px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #101543 0%, #1c2472 55%, #2f2b8f 100%);
+    color: #fff; border-radius: 24px; padding: 60px 44px; text-align: center;
+    box-shadow: 0 30px 70px rgba(14, 18, 48, .35);
   }
-  .kontak-box h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
-  .kontak-box p { color: #b9bdd0; margin: 12px auto 28px; max-width: 520px; }
-  .kontak-box .btn-primary { background: #fff; color: var(--ink); }
-  .kontak-box .btn-primary:hover { background: var(--accent); color: #fff; }
+  .kontak-box::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(420px 200px at 15% 0%, rgba(255,255,255,.12), transparent 60%),
+                radial-gradient(380px 220px at 90% 100%, rgba(114,46,209,.4), transparent 60%);
+    pointer-events: none;
+  }
+  .kontak-box > * { position: relative; }
+  .kontak-box h2 { font-size: clamp(1.5rem, 3.2vw, 2.2rem); letter-spacing: -.02em; }
+  .kontak-box p { color: #c3c8e8; margin: 14px auto 30px; max-width: 540px; }
+  .kontak-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .kontak-meta { margin-top: 26px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: .82rem; color: #a9afd8; }
+  .kontak-meta span { display: inline-flex; align-items: center; gap: 7px; }
+  .kontak-meta svg { width: 15px; height: 15px; }
+  @media (max-width: 600px) { .kontak-box { padding: 44px 24px; } }
+  .toast {
+    position: fixed; bottom: 26px; left: 50%; transform: translate(-50%, 80px);
+    background: var(--ink); color: #fff; font-size: .87rem; font-weight: 600;
+    padding: 11px 22px; border-radius: 999px; opacity: 0; transition: .3s; z-index: 99;
+    pointer-events: none;
+  }
+  .toast.show { transform: translate(-50%, 0); opacity: 1; }
 
-  footer {
-    padding: 30px 0 40px; text-align: center;
-    color: var(--muted); font-size: .87rem;
+  /* ============ FOOTER ============ */
+  footer { border-top: 1px solid var(--line); padding: 40px 0; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .foot-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+  .foot-brand .logo-mark { width: 30px; height: 30px; font-size: .72rem; border-radius: 8px; box-shadow: none; }
+  .foot-links { display: flex; gap: 20px; font-size: .86rem; }
+  .foot-links a { color: var(--muted); text-decoration: none; font-weight: 600; }
+  .foot-links a:hover { color: var(--accent); }
+  .foot-copy { width: 100%; text-align: center; color: var(--muted); font-size: .8rem; margin-top: 6px; border-top: 1px dashed var(--line); padding-top: 22px; }
+  .foot-copy a { color: var(--muted); }
+  .foot-copy a:hover { color: var(--accent); }
+
+  /* ============ REVEAL ============ */
+  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s cubic-bezier(.2, .8, .2, 1); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .mock-chart i, .pill .dot::after { animation: none; }
+    html { scroll-behavior: auto; }
   }
 </style>
 </head>
 <body>
 
-<nav>
+<!-- ============ NAV ============ -->
+<header class="nav">
   <div class="container nav-inner">
-    <a class="brand" href="#">Tri<span>Digi</span></a>
-    <div class="nav-links">
+    <a href="#" class="logo" aria-label="TriDigi — beranda">
+      <span class="logo-mark">TD</span>
+      <span class="logo-text">TriDigi<em>· Dreamseed Company</em></span>
+    </a>
+    <nav class="nav-links" aria-label="Navigasi utama">
       <a href="#layanan">Layanan</a>
+      <a href="#keunggulan">Keunggulan</a>
       <a href="#cara-kerja">Cara Kerja</a>
       <a href="#contoh">Contoh Kerjaan</a>
-      <a href="#kontak" class="nav-cta">Chat Gratis</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="container">
-    <h1>Data &amp; website yang <em>kerja sendiri</em> untuk bisnis Anda</h1>
-    <p>Saya bantu UMKM dan tim kecil hemat waktu — pantau harga kompetitor,
-       laporan harian otomatis, bot integrasi, dan website yang cepat.
-       Selesai dalam hari, bukan bulan.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://wa.me/6282321490807?text=Halo%2C%20saya%20mau%20konsultasi%20gratis">Konsultasi Gratis via WhatsApp</a>
-      <a class="btn btn-ghost" href="#layanan">Lihat Layanan</a>
-    </div>
-    <div class="hero-badges">
-      <span>Estimasi jelas sebelum mulai</span>
-      <span>Revisi sebelum final</span>
-      <span>Garansi 14 hari</span>
-    </div>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="https://wa.me/6282321490807?text=Halo%20TriDigi%2C%20saya%20mau%20konsultasi%20gratis" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.896 9.82 9.82 0 0 1 2.892 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.8 11.8 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg>
+      Chat WhatsApp
+    </a>
   </div>
 </header>
 
-<section id="layanan">
-  <div class="container">
-    <h2 class="section-title">Layanan</h2>
-    <p class="section-sub">Empat hal yang paling sering diminta klien. Butuh yang lain? Tanya saja.</p>
-    <div class="grid">
-      <div class="card">
-        <div class="icon">📊</div>
-        <h3>Data &amp; Scraping Otomatis</h3>
-        <p>Harga kompetitor, produk baru, listing, lowongan — terkumpul rapi di Excel setiap hari tanpa klik manual.</p>
-        <span class="price"><s>Rp 1.000.000</s><strong>Rp 500.000</strong><span class="promo">PROMO -50%</span></span>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span> Menerima proyek baru · <b>Promo klien perdana −50%</b></span>
+      <h1>Data &amp; website yang <span class="grad">kerja sendiri</span> untuk bisnis Anda</h1>
+      <p class="hero-sub">TriDigi membantu UMKM dan tim kecil hemat waktu — pantau harga kompetitor,
+        laporan harian otomatis, bot integrasi, dan website yang cepat. Selesai dalam hari, bukan bulan.</p>
+      <div class="hero-cta">
+        <a class="btn btn-wa" href="https://wa.me/6282321490807?text=Halo%20TriDigi%2C%20saya%20mau%20konsultasi%20gratis" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.896 9.82 9.82 0 0 1 2.892 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.8 11.8 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg>
+          Konsultasi Gratis
+        </a>
+        <a class="btn btn-ghost" href="#layanan">Lihat Layanan</a>
       </div>
-      <div class="card">
-        <div class="icon">📈</div>
-        <h3>Laporan &amp; Dashboard</h3>
-        <p>Data dari beberapa sumber digabung jadi satu laporan atau dashboard yang mudah dibaca owner.</p>
-        <span class="price"><s>Rp 1.500.000</s><strong>Rp 750.000</strong><span class="promo">PROMO -50%</span></span>
-      </div>
-      <div class="card">
-        <div class="icon">🤖</div>
-        <h3>Bot &amp; Integrasi</h3>
-        <p>Auto-reply, notifikasi stok, sinkron data antar aplikasi: Telegram, WhatsApp, Google Sheets, payment gateway.</p>
-        <span class="price"><s>Rp 2.000.000</s><strong>Rp 1.000.000</strong><span class="promo">PROMO -50%</span></span>
-      </div>
-      <div class="card">
-        <div class="icon">🌐</div>
-        <h3>Website &amp; Landing Page</h3>
-        <p>Company profile, katalog produk, atau landing page promosi — cepat, rapi, dan enak dibuka di HP.</p>
-        <span class="price"><s>Rp 1.500.000</s><strong>Rp 750.000</strong><span class="promo">PROMO -50%</span></span>
+      <div class="hero-badges">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Estimasi jelas sebelum mulai</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Revisi sebelum final</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Garansi 14 hari</span>
       </div>
     </div>
-    <p class="price-note">💳 Harga dicoret = harga normal. Harga <strong>promo</strong> berlaku untuk pemesanan awal — kuota terbatas.</p>
+
+    <div class="hero-visual" data-reveal>
+      <div class="float-tag">📊 Laporan harian <span>otomatis</span></div>
+      <div class="mock" role="img" aria-label="Contoh tampilan laporan harga kompetitor otomatis">
+        <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">laporan-harian.xlsx</span></div>
+        <div class="mock-body">
+          <div class="mock-head">
+            <div><small>Harga Kompetitor</small><b>Pantauan Mingguan</b></div>
+            <span class="mock-live">● otomatis 07:00</span>
+          </div>
+          <div class="mock-rows">
+            <div class="mock-row"><span>Produk A</span><s>Rp 120.000</s><b>Rp 114.500</b><em class="em-down">▼ 5%</em></div>
+            <div class="mock-row"><span>Produk B</span><s>Rp 89.000</s><b>Rp 92.500</b><em class="em-up">▲ 4%</em></div>
+            <div class="mock-row"><span>Produk C</span><s>Rp 250.000</s><b>Rp 239.000</b><em class="em-down">▼ 4%</em></div>
+          </div>
+          <div class="mock-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mock-foot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Tersimpan otomatis · terkirim ke WhatsApp owner
+          </div>
+        </div>
+      </div>
+      <p class="mock-caption">Contoh output yang diterima klien — tanpa klik manual.</p>
+    </div>
   </div>
 </section>
 
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="container stats-grid">
+    <div class="stat">
+      <span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></span>
+      <div><b>Respons &lt; 24 jam</b><small>Balasan cepat, tanpa antre</small></div>
+    </div>
+    <div class="stat">
+      <span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 15 11 17 15 13"/></svg></span>
+      <div><b>Tenggat jelas</b><small>Estimasi waktu di awal</small></div>
+    </div>
+    <div class="stat">
+      <span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+      <div><b>Garansi 14 hari</b><small>Perbaikan gratis setelah serah terima</small></div>
+    </div>
+    <div class="stat">
+      <span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-5-9 5v8l9 5z"/><path d="M3.3 7L12 12l8.7-5"/><line x1="12" y1="12" x2="12" y2="21"/></svg></span>
+      <div><b>Kode 100% milik Anda</b><small>Serah terima + panduan lengkap</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LAYANAN ============ -->
+<section id="layanan">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Layanan</span>
+      <h2>Empat cara TriDigi bantu bisnis Anda</h2>
+      <p>Harga promo berlaku untuk pemesanan awal. Butuh hal lain? Tanya saja — kalau bisa, pasti saya kerjakan.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card" data-reveal>
+        <span class="tag-top">Paling diminati</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><line x1="7" y1="16" x2="7" y2="11"/><line x1="12" y1="16" x2="12" y2="7"/><line x1="17" y1="16" x2="17" y2="13"/></svg></span>
+        <h3>Data &amp; Scraping Otomatis</h3>
+        <p>Harga kompetitor, produk baru, listing, lowongan — terkumpul rapi di Excel setiap hari tanpa klik manual.</p>
+        <div class="price">
+          <s>Rp 1.000.000</s>
+          <div class="price-line"><strong>Rp 500.000</strong><span class="promo">PROMO −50%</span></div>
+          <small>Sekali bayar · termasuk revisi</small>
+        </div>
+      </div>
+      <div class="card" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+        <h3>Laporan &amp; Dashboard</h3>
+        <p>Data dari beberapa sumber digabung jadi satu laporan atau dashboard yang mudah dibaca owner.</p>
+        <div class="price">
+          <s>Rp 1.500.000</s>
+          <div class="price-line"><strong>Rp 750.000</strong><span class="promo">PROMO −50%</span></div>
+          <small>Sekali bayar · termasuk revisi</small>
+        </div>
+      </div>
+      <div class="card" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><circle cx="9" cy="14" r="1.4"/><circle cx="15" cy="14" r="1.4"/><line x1="12" y1="8" x2="12" y2="4"/><circle cx="12" cy="3" r="1.2"/><line x1="4" y1="13" x2="2" y2="13"/><line x1="20" y1="13" x2="22" y2="13"/></svg></span>
+        <h3>Bot &amp; Integrasi</h3>
+        <p>Auto-reply, notifikasi stok, sinkron data antar aplikasi: Telegram, WhatsApp, Google Sheets, payment gateway.</p>
+        <div class="price">
+          <s>Rp 2.000.000</s>
+          <div class="price-line"><strong>Rp 1.000.000</strong><span class="promo">PROMO −50%</span></div>
+          <small>Sekali bayar · termasuk revisi</small>
+        </div>
+      </div>
+      <div class="card" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14.5 14.5 0 0 1 0 18 14.5 14.5 0 0 1 0-18z"/></svg></span>
+        <h3>Website &amp; Landing Page</h3>
+        <p>Company profile, katalog produk, atau landing page promosi — cepat, rapi, dan enak dibuka di HP.</p>
+        <div class="price">
+          <s>Rp 1.500.000</s>
+          <div class="price-line"><strong>Rp 750.000</strong><span class="promo">PROMO −50%</span></div>
+          <small>Sekali bayar · termasuk revisi</small>
+        </div>
+      </div>
+    </div>
+    <p class="price-note" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Harga dicoret = harga normal. Harga <strong>&nbsp;promo&nbsp;</strong> berlaku untuk pemesanan awal — kuota terbatas.
+    </p>
+  </div>
+</section>
+
+<!-- ============ KEUNGGULAN ============ -->
+<section class="why" id="keunggulan">
+  <div class="container">
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">Kenapa TriDigi</span>
+      <h2>Proses yang jelas, tanpa drama</h2>
+      <p>Tiga komitmen yang selalu saya pegang di setiap proyek.</p>
+    </div>
+    <div class="grid-3">
+      <div class="why-card" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <h3>Langsung dengan developer</h3>
+        <p>Chat langsung dengan saya — bukan sales, bukan tiket support. Pertanyaan dijawab cepat dan jelas.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <h3>Biaya &amp; waktu transparan</h3>
+        <p>Estimasi harga dan tenggat dikasih sebelum mulai. Tidak ada biaya kejutan di akhir proyek.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+        <h3>Garansi 14 hari</h3>
+        <p>Serah terima lengkap dengan panduan pemakaian. Ada masalah dalam 14 hari? Perbaikan gratis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARA KERJA ============ -->
 <section id="cara-kerja">
   <div class="container">
-    <h2 class="section-title">Cara kerja</h2>
-    <p class="section-sub">Transparan dari awal — Anda tahu biaya, waktu, dan hasilnya.</p>
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">Cara Kerja</span>
+      <h2>Tiga langkah dari chat ke hasil</h2>
+      <p>Transparan dari awal — Anda tahu biaya, waktu, dan hasilnya.</p>
+    </div>
     <div class="steps">
-      <div class="step">
+      <div class="step" data-reveal>
         <b>1</b>
         <h3>Konsultasi</h3>
         <p>Ceritakan masalahnya. Saya balas dengan estimasi biaya, waktu, dan contoh hasil — gratis, tanpa komitmen.</p>
       </div>
-      <div class="step">
+      <div class="step" data-reveal>
         <b>2</b>
         <h3>Bangun</h3>
-        <p>Dikerjakan dengan demo di tengah proses. Anda bisa minta revisi sebelum final.</p>
+        <p>Dikerjakan dengan demo di tengah proses. Anda bisa minta revisi sebelum final — tanpa biaya tambahan.</p>
       </div>
-      <div class="step">
+      <div class="step" data-reveal>
         <b>3</b>
         <h3>Serah terima</h3>
-        <p>File/panduan lengkap + garansi perbaikan 14 hari. Butuh update? Tinggal chat.</p>
+        <p>File dan panduan lengkap diserahkan, plus garansi perbaikan 14 hari. Butuh update? Tinggal chat.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contoh">
+<!-- ============ CONTOH ============ -->
+<section id="contoh" style="background: var(--bg-soft); border-block: 1px solid var(--line);">
   <div class="container">
-    <h2 class="section-title">Contoh kerjaan</h2>
-    <p class="section-sub">Beberapa jenis proyek yang pernah/siap saya kerjakan.</p>
-    <div class="contoh-list">
-      <div class="contoh">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Contoh Kerjaan</span>
+      <h2>Jenis proyek yang siap saya kerjakan</h2>
+      <p>Setiap proyek disesuaikan dengan alur kerja bisnis Anda.</p>
+    </div>
+    <div class="grid-2">
+      <div class="work" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><polyline points="7 14 11 10 14 13 19 7"/></svg></span>
         <div>
           <b>Monitoring harga 10 kompetitor → Excel harian</b>
-          <small>Data masuk otomatis tiap pagi, owner tinggal buka.</small>
+          <p>Data masuk otomatis tiap pagi, owner tinggal buka — tanpa buka satu per satu website.</p>
+          <span class="tag">Scraping</span>
         </div>
-        <span class="tag">Scraping</span>
       </div>
-      <div class="contoh">
+      <div class="work" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
         <div>
           <b>Laporan penjualan gabungan multi-kanal</b>
-          <small>Export dari marketplace digabung + ringkasan mingguan.</small>
+          <p>Export dari beberapa marketplace digabung + ringkasan mingguan otomatis.</p>
+          <span class="tag">Otomasi</span>
         </div>
-        <span class="tag">Otomasi</span>
       </div>
-      <div class="contoh">
+      <div class="work" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>
         <div>
           <b>Notifikasi stok &amp; order ke WhatsApp tim</b>
-          <small>Tidak ada lagi order yang kelewat.</small>
+          <p>Tidak ada lagi order atau stok habis yang kelewat — semua langsung masuk grup.</p>
+          <span class="tag">Bot</span>
         </div>
-        <span class="tag">Bot</span>
       </div>
-      <div class="contoh">
+      <div class="work" data-reveal>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg></span>
         <div>
           <b>Landing page promosi + form lead</b>
-          <small>Siap iklan, ringan dibuka di HP.</small>
+          <p>Siap dipasangi iklan, ringan dibuka di HP, leads masuk langsung ke email/WA Anda.</p>
+          <span class="tag">Website</span>
         </div>
-        <span class="tag">Website</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="tentang" id="tentang">
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
   <div class="container">
-    <h2 class="section-title">Tentang saya</h2>
-    <p>Reyza Abdurrozaq — di balik <strong>TriDigi</strong>, bagian dari
-       <strong>Dreamseed Company</strong>. Saya fokus pada hal yang bikin bisnis
-       hemat waktu: otomasi, data, dan web. Saya suka proyek kecil yang hasilnya
-       terasa langsung — bukan proyek 6 bulan tanpa kabar. Setiap klien dapat
-       komunikasi langsung, estimasi jelas, dan hasil yang bisa dipakai sendiri
-       tanpa tergantung saya.</p>
-  </div>
-</section>
-
-<section id="kontak">
-  <div class="container">
-    <div class="kontak-box">
-      <h2>Punya masalah yang bisa diotomatiskan?</h2>
-      <p>Ceritakan saja dulu — saya balas dengan estimasi biaya dan waktu.
-         Gratis, tanpa komitmen.</p>
-      <a class="btn btn-primary" href="https://wa.me/6282321490807?text=Halo%2C%20saya%20mau%20konsultasi%20gratis">Chat Sekarang</a>
+    <div class="sec-head center" data-reveal>
+      <span class="eyebrow">FAQ</span>
+      <h2>Pertanyaan yang sering muncul</h2>
+    </div>
+    <div class="faq-list" data-reveal>
+      <details open>
+        <summary>Berapa lama pengerjaannya?</summary>
+        <p>Landing page 2–5 hari kerja, tool/otomasi 2–7 hari tergantung kompleksitas. Proyek kecil biasanya jauh lebih cepat — estimasi pasti saya berikan setelah konsultasi gratis.</p>
+      </details>
+      <details>
+        <summary>Bagaimana sistem pembayarannya?</summary>
+        <p>Proyek sekali jadi: 50% di muka, 50% saat serah terima. Layanan berlangganan (misal laporan harian) dibayar bulanan. Semua disepakati di awal sebelum kerja dimulai.</p>
+      </details>
+      <details>
+        <summary>Saya belum paham teknisnya, apakah bisa tetap konsultasi?</summary>
+        <p>Bisa banget. Cukup ceritakan masalah bisnisnya — "harga kompetitor sering berubah dan saya selalu telat tahu", misalnya. Saya yang tentukan solusi teknisnya.</p>
+      </details>
+      <details>
+        <summary>Apakah ada biaya tersembunyi?</summary>
+        <p>Tidak. Kalau ada kebutuhan berbayar pihak ketiga (domain, hosting, API), saya sebutkan terpisah dan Anda yang putuskan. Tool lokal biasanya jalan tanpa server berbayar.</p>
+      </details>
+      <details>
+        <summary>Kalau hasilnya tidak sesuai harapan?</summary>
+        <p>Makanya ada demo di tengah proses dan revisi sebelum final. Setelah serah terima pun ada garansi perbaikan 14 hari, jadi risiko ada di saya, bukan di Anda.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ============ KONTAK ============ -->
+<section id="kontak">
   <div class="container">
-    © <span id="tahun"></span> TriDigi - Reyza Abdurrozaq · Dreamseed Company ·
-    <a href="mailto:reyzabdullah@gmail.com" style="color:inherit">reyzabdullah@gmail.com</a>
+    <div class="kontak-box" data-reveal>
+      <h2>Punya masalah yang bisa diotomatiskan?</h2>
+      <p>Ceritakan saja dulu — saya balas dengan estimasi biaya dan waktu.
+         Konsultasi gratis, tanpa komitmen.</p>
+      <div class="kontak-actions">
+        <a class="btn btn-wa" href="https://wa.me/6282321490807?text=Halo%20TriDigi%2C%20saya%20mau%20konsultasi%20gratis" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.896 9.82 9.82 0 0 1 2.892 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.8 11.8 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"/></svg>
+          Chat WhatsApp
+        </a>
+        <button class="btn btn-light" id="copyEmail" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          reyzabdullah@gmail.com
+        </button>
+      </div>
+      <div class="kontak-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg> Respons &lt; 24 jam</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Konsultasi gratis</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Tanpa komitmen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container foot">
+    <div class="foot-brand"><span class="logo-mark">TD</span> TriDigi</div>
+    <div class="foot-links">
+      <a href="#layanan">Layanan</a>
+      <a href="#cara-kerja">Cara Kerja</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://wa.me/6282321490807" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div class="foot-copy">
+      © <span id="tahun"></span> TriDigi - Reyza Abdurrozaq · Dreamseed Company ·
+      <a href="mailto:reyzabdullah@gmail.com">reyzabdullah@gmail.com</a>
+    </div>
   </div>
 </footer>
 
+<div class="toast" id="toast">Email tersalin ✓</div>
+
 <script>
   document.getElementById("tahun").textContent = new Date().getFullYear();
+
+  window.addEventListener("scroll", function () {
+    document.body.classList.toggle("scrolled", window.scrollY > 8);
+  }, { passive: true });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+
+  document.getElementById("copyEmail").addEventListener("click", function () {
+    var email = "reyzabdullah@gmail.com";
+    function ok() {
+      var t = document.getElementById("toast");
+      t.classList.add("show");
+      setTimeout(function () { t.classList.remove("show"); }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(ok, function () { location.href = "mailto:" + email; });
+    } else {
+      location.href = "mailto:" + email;
+    }
+  });
 </script>
 
 </body>
