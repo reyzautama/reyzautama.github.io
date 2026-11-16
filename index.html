@@ -92,7 +92,15 @@
   .card .icon { font-size: 1.6rem; }
   .card h3 { font-size: 1.05rem; margin: 12px 0 8px; }
   .card p { color: var(--muted); font-size: .93rem; }
-  .card .price { display: block; margin-top: 14px; font-weight: 700; color: var(--accent); font-size: .95rem; }
+  .card .price { display: block; margin-top: 14px; font-weight: 700; font-size: .95rem; }
+  .card .price s { color: #9aa0b0; font-weight: 500; margin-right: 6px; text-decoration-thickness: 1.5px; }
+  .card .price strong { color: var(--accent); font-size: 1.12rem; }
+  .card .price .promo {
+    display: inline-block; margin-left: 6px; background: #ff4d4f; color: #fff;
+    font-size: .66rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+    vertical-align: middle; letter-spacing: .03em;
+  }
+  .price-note { margin-top: 18px; font-size: .85rem; color: var(--muted); }
 
   /* LANGKAH */
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 36px; }
@@ -180,27 +188,28 @@
         <div class="icon">📊</div>
         <h3>Data &amp; Scraping Otomatis</h3>
         <p>Harga kompetitor, produk baru, listing, lowongan — terkumpul rapi di Excel setiap hari tanpa klik manual.</p>
-        <span class="price">Mulai Rp 500.000</span>
+        <span class="price"><s>Rp 1.000.000</s><strong>Rp 500.000</strong><span class="promo">PROMO -50%</span></span>
       </div>
       <div class="card">
         <div class="icon">📈</div>
         <h3>Laporan &amp; Dashboard</h3>
         <p>Data dari beberapa sumber digabung jadi satu laporan atau dashboard yang mudah dibaca owner.</p>
-        <span class="price">Mulai Rp 750.000</span>
+        <span class="price"><s>Rp 1.500.000</s><strong>Rp 750.000</strong><span class="promo">PROMO -50%</span></span>
       </div>
       <div class="card">
         <div class="icon">🤖</div>
         <h3>Bot &amp; Integrasi</h3>
         <p>Auto-reply, notifikasi stok, sinkron data antar aplikasi: Telegram, WhatsApp, Google Sheets, payment gateway.</p>
-        <span class="price">Mulai Rp 1.000.000</span>
+        <span class="price"><s>Rp 2.000.000</s><strong>Rp 1.000.000</strong><span class="promo">PROMO -50%</span></span>
       </div>
       <div class="card">
         <div class="icon">🌐</div>
         <h3>Website &amp; Landing Page</h3>
         <p>Company profile, katalog produk, atau landing page promosi — cepat, rapi, dan enak dibuka di HP.</p>
-        <span class="price">Mulai Rp 750.000</span>
+        <span class="price"><s>Rp 1.500.000</s><strong>Rp 750.000</strong><span class="promo">PROMO -50%</span></span>
       </div>
     </div>
+    <p class="price-note">💳 Harga dicoret = harga normal. Harga <strong>promo</strong> berlaku untuk pemesanan awal — kuota terbatas.</p>
   </div>
 </section>
 
