@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jasa Website & Otomasi Bisnis | Nama Anda</title>
+<meta name="description" content="Saya bantu UMKM dan tim kecil hemat waktu: scraping data, laporan otomatis, bot, dan website yang cepat. Konsultasi gratis.">
+<style>
+  :root {
+    --accent: #2f54eb;
+    --accent-dark: #1d39c4;
+    --ink: #1a1a2e;
+    --muted: #5c6070;
+    --bg: #ffffff;
+    --bg-soft: #f5f7ff;
+    --border: #e6e9f2;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 62px;
+  }
+  .brand { font-weight: 800; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff !important;
+    padding: 9px 18px; border-radius: 999px; font-weight: 600;
+  }
+  .nav-cta:hover { background: var(--accent-dark); }
+  @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--bg-soft) 0%, #ffffff 70%);
+    padding: 84px 0 70px;
+  }
+  .hero h1 {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    line-height: 1.2; letter-spacing: -.02em; max-width: 760px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p {
+    margin-top: 18px; font-size: 1.1rem; color: var(--muted); max-width: 640px;
+  }
+  .hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 28px; border-radius: 999px;
+    font-weight: 600; text-decoration: none; font-size: 1rem;
+    transition: .15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-badges { margin-top: 34px; display: flex; gap: 22px; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
+  .hero-badges span::before { content: "✓ "; color: #22a06b; font-weight: 700; }
+
+  /* SECTION */
+  section { padding: 72px 0; }
+  .section-title { font-size: 1.7rem; letter-spacing: -.01em; }
+  .section-sub { color: var(--muted); margin-top: 8px; max-width: 620px; }
+
+  /* LAYANAN */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 36px; }
+  .card {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px 22px; transition: .15s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(47,84,235,.08); }
+  .card .icon { font-size: 1.6rem; }
+  .card h3 { font-size: 1.05rem; margin: 12px 0 8px; }
+  .card p { color: var(--muted); font-size: .93rem; }
+  .card .price { display: block; margin-top: 14px; font-weight: 700; color: var(--accent); font-size: .95rem; }
+
+  /* LANGKAH */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 36px; }
+  .step { background: var(--bg-soft); border-radius: var(--radius); padding: 26px 22px; }
+  .step b {
+    display: inline-flex; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--accent); color: #fff; align-items: center; justify-content: center;
+    font-size: .95rem; margin-bottom: 12px;
+  }
+  .step h3 { font-size: 1rem; margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: .92rem; }
+
+  /* CONTOH */
+  .contoh-list { margin-top: 30px; display: grid; gap: 14px; }
+  .contoh {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 22px; flex-wrap: wrap;
+  }
+  .contoh b { font-size: .98rem; }
+  .contoh small { color: var(--muted); display: block; font-size: .88rem; margin-top: 2px; }
+  .tag {
+    background: var(--bg-soft); color: var(--accent); font-size: .8rem;
+    font-weight: 600; padding: 5px 12px; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* TENTANG */
+  .tentang { background: var(--bg-soft); }
+  .tentang p { max-width: 680px; color: var(--muted); margin-top: 14px; }
+
+  /* KONTAK */
+  .kontak-box {
+    background: var(--ink); color: #fff; border-radius: 20px;
+    padding: 52px 40px; text-align: center; margin-top: 8px;
+  }
+  .kontak-box h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .kontak-box p { color: #b9bdd0; margin: 12px auto 28px; max-width: 520px; }
+  .kontak-box .btn-primary { background: #fff; color: var(--ink); }
+  .kontak-box .btn-primary:hover { background: var(--accent); color: #fff; }
+
+  footer {
+    padding: 30px 0 40px; text-align: center;
+    color: var(--muted); font-size: .87rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#">Nama<span>Anda</span></a>
+    <div class="nav-links">
+      <a href="#layanan">Layanan</a>
+      <a href="#cara-kerja">Cara Kerja</a>
+      <a href="#contoh">Contoh Kerjaan</a>
+      <a href="#kontak" class="nav-cta">Chat Gratis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Data &amp; website yang <em>kerja sendiri</em> untuk bisnis Anda</h1>
+    <p>Saya bantu UMKM dan tim kecil hemat waktu — pantau harga kompetitor,
+       laporan harian otomatis, bot integrasi, dan website yang cepat.
+       Selesai dalam hari, bukan bulan.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://wa.me/62XXXXXXXXXXX?text=Halo%2C%20saya%20mau%20konsultasi%20gratis">Konsultasi Gratis via WhatsApp</a>
+      <a class="btn btn-ghost" href="#layanan">Lihat Layanan</a>
+    </div>
+    <div class="hero-badges">
+      <span>Estimasi jelas sebelum mulai</span>
+      <span>Revisi sebelum final</span>
+      <span>Garansi 14 hari</span>
+    </div>
+  </div>
+</header>
+
+<section id="layanan">
+  <div class="container">
+    <h2 class="section-title">Layanan</h2>
+    <p class="section-sub">Empat hal yang paling sering diminta klien. Butuh yang lain? Tanya saja.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Data &amp; Scraping Otomatis</h3>
+        <p>Harga kompetitor, produk baru, listing, lowongan — terkumpul rapi di Excel setiap hari tanpa klik manual.</p>
+        <span class="price">Mulai Rp 500.000</span>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Laporan &amp; Dashboard</h3>
+        <p>Data dari beberapa sumber digabung jadi satu laporan atau dashboard yang mudah dibaca owner.</p>
+        <span class="price">Mulai Rp 750.000</span>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Bot &amp; Integrasi</h3>
+        <p>Auto-reply, notifikasi stok, sinkron data antar aplikasi: Telegram, WhatsApp, Google Sheets, payment gateway.</p>
+        <span class="price">Mulai Rp 1.000.000</span>
+      </div>
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Website &amp; Landing Page</h3>
+        <p>Company profile, katalog produk, atau landing page promosi — cepat, rapi, dan enak dibuka di HP.</p>
+        <span class="price">Mulai Rp 750.000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cara-kerja">
+  <div class="container">
+    <h2 class="section-title">Cara kerja</h2>
+    <p class="section-sub">Transparan dari awal — Anda tahu biaya, waktu, dan hasilnya.</p>
+    <div class="steps">
+      <div class="step">
+        <b>1</b>
+        <h3>Konsultasi</h3>
+        <p>Ceritakan masalahnya. Saya balas dengan estimasi biaya, waktu, dan contoh hasil — gratis, tanpa komitmen.</p>
+      </div>
+      <div class="step">
+        <b>2</b>
+        <h3>Bangun</h3>
+        <p>Dikerjakan dengan demo di tengah proses. Anda bisa minta revisi sebelum final.</p>
+      </div>
+      <div class="step">
+        <b>3</b>
+        <h3>Serah terima</h3>
+        <p>File/panduan lengkap + garansi perbaikan 14 hari. Butuh update? Tinggal chat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contoh">
+  <div class="container">
+    <h2 class="section-title">Contoh kerjaan</h2>
+    <p class="section-sub">Beberapa jenis proyek yang pernah/siap saya kerjakan.</p>
+    <div class="contoh-list">
+      <div class="contoh">
+        <div>
+          <b>Monitoring harga 10 kompetitor → Excel harian</b>
+          <small>Data masuk otomatis tiap pagi, owner tinggal buka.</small>
+        </div>
+        <span class="tag">Scraping</span>
+      </div>
+      <div class="contoh">
+        <div>
+          <b>Laporan penjualan gabungan multi-kanal</b>
+          <small>Export dari marketplace digabung + ringkasan mingguan.</small>
+        </div>
+        <span class="tag">Otomasi</span>
+      </div>
+      <div class="contoh">
+        <div>
+          <b>Notifikasi stok &amp; order ke WhatsApp tim</b>
+          <small>Tidak ada lagi order yang kelewat.</small>
+        </div>
+        <span class="tag">Bot</span>
+      </div>
+      <div class="contoh">
+        <div>
+          <b>Landing page promosi + form lead</b>
+          <small>Siap iklan, ringan dibuka di HP.</small>
+        </div>
+        <span class="tag">Website</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tentang" id="tentang">
+  <div class="container">
+    <h2 class="section-title">Tentang saya</h2>
+    <p>Developer yang fokus pada hal yang bikin bisnis hemat waktu: otomasi, data,
+       dan web. Saya suka proyek kecil yang hasilnya terasa langsung — bukan
+       proyek 6 bulan tanpa kabar. Setiap klien dapat komunikasi langsung,
+       estimasi jelas, dan hasil yang bisa dipakai sendiri tanpa tergantung saya.</p>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="container">
+    <div class="kontak-box">
+      <h2>Punya masalah yang bisa diotomatiskan?</h2>
+      <p>Ceritakan saja dulu — saya balas dengan estimasi biaya dan waktu.
+         Gratis, tanpa komitmen.</p>
+      <a class="btn btn-primary" href="https://wa.me/62XXXXXXXXXXX?text=Halo%2C%20saya%20mau%20konsultasi%20gratis">Chat Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="tahun"></span> Nama Anda · Jasa Website &amp; Otomasi Bisnis ·
+    <a href="mailto:email@anda.com" style="color:inherit">email@anda.com</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("tahun").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
